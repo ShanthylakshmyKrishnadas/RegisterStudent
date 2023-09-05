@@ -1,0 +1,62 @@
+<html lang="en">
+    <head>
+        <title>
+            Image
+        </title>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+<body>
+    <div class="container mt-5 bg-info">
+        <h1 class="alert alert-info text-center">Student Registration</h1>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <form method="post" action="{% url 'add_student_details' %}" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <label>Enter First Name</label><br><br>
+                    <input type="text" name="first_name" class="form-control mt-3" placeholder="First Name"><br><br>
+                    <label>Enter Last Name</label><br><br>
+                    <input type="text" name="last_name" class="form-control mt-3" placeholder="last Name"><br><br>
+                    <label>Enter your Phone Number</label><br><br>
+                    <input type="number" name="phone_number" class="form-control mt-3" placeholder="Phone Number"><br><br>
+                    <label>Enter Email id</label><br><br>
+                    <input type="email" name="email" class="form-control mt-3" placeholder="Email id"><br><br>
+                    <label>Enter Course</label><br><br>
+                    <select name="course" id="course" class="form-control mt-3" required>
+                        <option value="s" selected>Select option</option>
+                        <option value="Master Of Computer Science" >Master Of Computer Science(MSc)</option>
+                        <option value="Master Of Computer Application" >Master Of Computer Application(MCA)</option>
+                        <option value="Bachelor of Computer Application" >Bachelor of Computer Application(BCA)</option>
+                        <option value="Bachelor of Commerce" >Bachelor of Commerce(B.COM)</option>
+                        <option value="Master of Commerse" >Master of Commerse(M.COM)</option>
+                        <option value="BTech IT" >BTech IT</option>
+                        <option value="Bachelor of Travel and Tourism" >Bachelor of Travel and Tourism(BTS)</option>
+
+                    </select><br><br>
+                    <label>Enter your Address</label><br><br>
+                    <textarea class="form-control mt-3" rows="6" cols="30" name="address" placeholder="Enter your Address"></textarea><br><br><br>
+                    <input type="file" name="file" class="form-control mt-3" accept="image/*"><br>
+                    <button type="submit" class="btn btn-primary mt-3 w-100">Submit</button>
+                    <button type="button" class="btn btn-primary mt-3 w-100"><a href="{% url 'show' %}">View</a></button>
+                </form>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+</body>
+</html>

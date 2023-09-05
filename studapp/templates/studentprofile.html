@@ -1,0 +1,58 @@
+<html lang="en">
+    <head>
+        <title>
+            Image
+        </title>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    </head>
+<body>
+    <div class="container mt-5">
+        <h1 class="alert alert-info text-center">STUDENT PROFILE</h1>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <form method="post" action="/edit_student_profile/{{ students.id }}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if students.image %}
+                    <img src="{{ students.image.url }}" width="150" height="150" class="img-thumbnail"><br>
+
+                    {% else %}
+                    <img src="{% static 'images/default.jpg' %}" alt="" width="150" height="150" class="img-thumbnail">
+                    {% endif %}    <br>                
+                    <label>First Name</label>
+                    <input type="text" name="first_name" class="form-control mt-3" value="{{students.first_name}}"><br>
+                    <label>Last Name</label>
+                    <input type="text" name="last_name" class="form-control mt-3" value="{{students.last_name}}"><br>
+                    <label>Phone Number</label>
+                    <input type="number" name="phone_number" class="form-control mt-3" value="{{students.phone_number}}"><br>
+                    <label>Email id</label>
+                    <input type="email" name="email" class="form-control mt-3" value="{{students.email}}"><br>
+                    <label>Course</label>
+                    <input type="text" name="course" class="form-control mt-3" value="{{students.course}}"><br>
+                    <label>Address</label>
+                    <input type="text" name="address" class="form-control mt-3" value="{{students.address}}"><br><br>
+                    
+                    <input type="file" name="file" class="form-control mt-3" accept="image/*" value="{{ students.image }}" ><br><br>
+                    <center><button class="btn btn-outline-dark btn-sm" type="submit">UPDATE</button></center>
+                    <input type="button" id= "prev" class="form-control mt-3" value="previous Page" onclick="javascript:history.go(-1);">
+                </form>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+</body>
+</html>
